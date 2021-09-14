@@ -1,0 +1,21 @@
+﻿@charset "utf-8";
+
+/* =======================================
+
+	ContentsElements
+
+======================================= */
+
+/* textArea
+------------------------ */
+#textArea {
+	margin: 0 auto;
+	width: 700px;
+}
+#textArea textarea {
+	padding: 10px;
+	width: 700px;
+	height: 300px;
+	background: #fff;
+	border: #999 1px solid;
+}
