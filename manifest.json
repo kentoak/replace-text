@@ -1,0 +1,22 @@
+{
+    "name": "My memo",
+    "description": "Extension for memo to delete halfspace and improve sentence",
+    "version": "1.0",
+    "content_scripts": [
+        {
+          "matches": ["http://*/*", "https://*/*"],
+          "js": ["js/halfSpaceDelete.js","js/jquery-3.6.0.min.js"],
+          "css": ["css/contents.css"]
+        }
+      ],
+      "icons": {
+        "48": "img/memo.png"
+      },
+    "manifest_version": 3,
+    "action": {
+      "default_icon": {
+        "32": "img/memo.png"
+      },
+      "default_popup": "index.html"
+    }
+}
