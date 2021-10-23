@@ -9,12 +9,12 @@
 /* textArea
 ------------------------ */
 #textArea {
-	margin: 0 auto;
-	width: 700px;
+	margin: 10 auto;
+	width: 470px;
 }
 #textArea textarea {
 	padding: 10px;
-	width: 700px;
+	width: 450px;
 	height: 300px;
 	background: #fff;
 	border: #999 1px solid;

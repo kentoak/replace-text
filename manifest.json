@@ -20,5 +20,15 @@
         "js": ["js/jquery-3.6.0.min.js"],
         "css": ["css/contents.css"]
       }
-    ]
+    ],
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+        "default": "Alt+M",
+        "windows": "Alt+M",
+        "mac": "Alt+M"
+        },
+        "description": "メモ"
+      }
+    }
 }
