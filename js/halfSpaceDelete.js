@@ -1,4 +1,4 @@
-window.onload = function(){
+$(function(){
 	var textArea = $('#changeText');
 	textArea.on('keydown keyup keypress change focus blur click',function(){//keydown keyup keypress change: 入力エリアになにかしらの反応があった時のアクションを記述
 		var self = $(this),
@@ -8,11 +8,11 @@ window.onload = function(){
 		setText = selfVal.replace(/([^\w.]) +([^\w.])/g, '$1$2').replace(/([\w.]) +([^\w.])/g, '$1$2').replace(/([^\w.]) +([\w.])/g, '$1$2').replace(/([^\w.]),+([^\w.])/g, '$1、$2').replace(/([^\w.])，+([^\w.])/g, '$1、$2').replace(/([^\w.])\.+/g, '$1。').replace(/([^\w.])\．+/g, '$1。').replace(/([\w.])、+([\w.])/g, '$1,$2').replace(/([\w.])。+/g, '$1.').replace(/([\w.]):+([\w.])/g, '$1: $2');//半角スペースの繰り返しを消す //([^\w.])は全角 //+は直前の1回以上の繰り返し //カッコ()が＄の番号
 		self.val(setText);
 	});
-};
+});
 
-window.onload = function(){
+$(function(){
 	var btn1= $('#btn1');
 	btn1.on('click',function(){
 		$('#changeText').val($('#changeText').val().replace(/\r?\n/g, ' '))
 	});
-};
+});

@@ -11,16 +11,9 @@
         "default_title": "メモ！",
         "default_popup": "index.html"
     },
-    "background": {
-      "scripts": ["background.js"]
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["js/jquery-3.6.0.min.js"],
-        "css": ["css/contents.css"]
-      }
-    ],
+    "permissions": ["tabs"],
+    
+
     "commands": {
       "_execute_browser_action": {
         "suggested_key": {
