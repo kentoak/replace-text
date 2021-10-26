@@ -10,12 +10,12 @@
 ------------------------ */
 #textArea {
 	margin: 10 auto;
-	width: 470px;
+	width: 370px;
 }
 #textArea textarea {
 	padding: 10px;
-	width: 450px;
-	height: 300px;
+	width: 350px;
+	height: 200px;
 	background: #fff;
 	border: #999 1px solid;
 }
