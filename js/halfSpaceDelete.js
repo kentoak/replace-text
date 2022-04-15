@@ -40,10 +40,10 @@ $(function(){
 	//ここ田岡健太
     document.onkeydown = function(e) {
         var keyCode = false;
-        if (e.keyCode == 18) {//F1を押した時
-			//alert("asahi")
+        if (e.keyCode == 18) {//ALTを押した時
 			var btn1= $('#btn1');
 			btn1.click();
+			//window.alert("テキストの内容をコピーしました")
         } else if (event.which) {
             keyCode = event.which;
         }
@@ -95,17 +95,30 @@ $(function(){
 });
 
 $(function(){
-	var btn1= $('#btn2');
-	btn1.on('click',function(){
+	var btn2= $('#btn2');
+	btn2.on('click',function(){
 		var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
 	});
 });
+
+$(function(){
+	var btn3= $('#btn3');
+	btn3.on('click',function(){
+		document.getElementById("count1").innerText = document.querySelector('#changeText').value.length+"文字";;
+	});
+});
+
 var storage = chrome.storage.local;
 
 function saveMemo(){
-	storage.set({'data_changeText':$('#changeText').val()}, function(){
+	storage.set({'data_changeText':$('#changeText').val()}, function(){//上側
+		// storage.get("data_changeText",function(value){
+		// 	var value_data = value.data_changeText;
+		// 	//alert(value_data)
+		// 	document.querySelector('#savedText1').textContent = value_data
+		// });
 		storage.get('config__send_flg',function(items) {
 			if(items.config__send_flg=="1"){
 			}else{
@@ -113,7 +126,23 @@ function saveMemo(){
 			}
 		});
 	});
-	storage.set({'data_text':$('#Text').val()}, function(){
+	storage.set({'data_savedText1':$('#savedText1').val()}, function(){
+		storage.get('config__send_flg',function(items) {
+			if(items.config__send_flg=="1"){
+			}else{
+				alert(chrome.i18n.getMessage("extSaveSuccess"));
+			}
+		});
+	});
+	storage.set({'data_savedText2':$('#savedText2').val()}, function(){
+		storage.get('config__send_flg',function(items) {
+			if(items.config__send_flg=="1"){
+			}else{
+				alert(chrome.i18n.getMessage("extSaveSuccess"));
+			}
+		});
+	});
+	storage.set({'data_text':$('#Text').val()}, function(){//下側
 		storage.get('config__send_flg',function(items) {
 			if(items.config__send_flg=="1"){
 			}else{
@@ -144,16 +173,33 @@ function realtimesave(){
 document.querySelector('#changeText').addEventListener('keydown', realtimesave);
 document.querySelector('#Text').addEventListener('keydown', realtimesave);
 
-
 window.onload = function() {
 	storage.get('data_changeText',function(items) {
 	  if(items.data_changeText){
-			$('#changeText').val(items.data_changeText);
+		//$('#changeText').val(items.data_changeText);
+		$('#savedText1').val(items.data_changeText);
 	  }
+	});
+	storage.get('data_savedText1',function(items) {
+		if(items.data_savedText1){
+		  $('#savedText2').val(items.data_savedText1);
+		}
+	});
+	storage.get('data_savedText2',function(items) {
+		if(items.data_savedText2){
+		  $('#savedText3').val(items.data_savedText2);
+		}
 	});
 	storage.get('data_text',function(items) {
 		if(items.data_text){
-			  $('#Text').val(items.data_text);
+			$('#Text').val(items.data_text);
 		}
-	  });
+	});
 };
+
+function countLength1(){
+	document.getElementById("count1").innerText = document.querySelector('#changeText').value.length+"文字";
+}
+function countLength2(){
+	document.getElementById("count2").innerText = document.querySelector('#Text').value.length+"文字";
+}
