@@ -4,22 +4,48 @@
 <head>
     <title>memo</title><!--ブラウザで表示される名前-->
 <link rel="stylesheet" href="css/contents.css">
+<script src="./js/mousetrap.min.js"></script>
+<script src="./mousetrap/mousetrap.js"></script>
 <script src="https://black-flag.net/wp-content/themes/BlackFlag/js/ga.js"></script>
 </head>
 <body>
     <input type="button" value="Newline Deletion" id="btn1">
+    <input type="button" value="Copy" id="btn2">
+    <input type="button" value="Count" id="btn3">
     <section>
         <div id="textArea">
             <form>
-                <textarea id="changeText" name="changeText" onfocus="this.select();" onclick="this.select();"></textarea>
+                <textarea id="changeText" onkeyup="countLength1();" name="changeText" onfocus="this.select();" onclick="this.select();" autofocus></textarea>
             </form>
         </div>
-        <body><br><br>Text Box</body>
-        <div id="textArea">
+        <div id="count1">文字数</div>
+        <br>
+        <div id="rireki">履歴1</div>
+        <div id="textArea1">
             <form>
-                <textarea id="Text" name="Text"></textarea>
+                <textarea id="savedText1" name="savedText1" ></textarea>
             </form>
         </div>
+        <div id="rireki">履歴2</div>
+        <div id="textArea1">
+            <form>
+                <textarea id="savedText2" name="savedText2" ></textarea>
+            </form>
+        </div>
+        <div id="rireki">履歴3</div>
+        <div id="textArea1">
+            <form>
+                <textarea id="savedText3" name="savedText3" ></textarea>
+            </form>
+        </div>
+        <br>
+        <div id="meeee">メモ</div>
+        <div id="textArea2">
+            <form>
+                <textarea id="Text" onkeyup="countLength2();" name="Text"></textarea>
+            </form>
+        </div>
+        <!-- <div id="count2">文字数</div> -->
     </section>
     <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/halfSpaceDelete.js",charset="utf-8"></script>
