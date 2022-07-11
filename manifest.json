@@ -6,14 +6,19 @@
       "48": "img/memo.png"
     },
     "manifest_version": 2,
+    "background" : {
+      "scripts": ["back_halfSpaceReplace.js"]
+    },
     "browser_action":{
         "default_icon": {"48":"img/memo.png"},
         "default_title": "メモ！",
         "default_popup": "index.html"
     },
-    "permissions": ["tabs"],
-    
-
+    "permissions": [
+      "storage"
+		  ,"unlimitedStorage"
+		  ,"contextMenus"
+      ,"tabs"],
     "commands": {
       "_execute_browser_action": {
         "suggested_key": {
