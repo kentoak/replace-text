@@ -13,24 +13,54 @@
 	width: 370px;
 }
 #textArea textarea {
-	padding: 10px;
+	position: relative; left: 0px; top: 17px;
+	padding: 1px;
 	width: 350px;
-	height: 200px;
+	height: 95px;
 	background: #fff;
 	border: #999 1px solid;
+	border-radius:5px;
 }
 #textArea1 textarea {
-	padding: 10px;
+	padding: 1px;
 	width: 350px;
-	height: 7px;
+	height: 20px;
 	background: #fff;
 	border: #999 1px solid;
+	border-radius:5px;
 }
 #textArea2 textarea {
-	padding: 10px;
+	padding: 1px;
 	width: 350px;
-	height: 80px;
+	height: 55px;
 	background: #fff;
 	border: #999 1px solid;
+	border-radius:5px;
 }
 
+#btn5{
+	position: absolute; left: 8px;  top: 5px
+}
+#btn4{
+	position: absolute; left: 60px;  top: 5px
+}
+#btn1{
+	position: absolute; left: 110px; top: 5px
+}
+#btn2{
+	position: absolute; left: 174px; top: 5px
+}
+#btn3{
+	position: absolute; left: 220px; top: 5px
+}
+#ForCmdL{
+	position: absolute; left: 269px; top: 5px
+}
+
+
+
+
+
+#count1{
+	position: relative; left: 320px; top: 15px;
+}
