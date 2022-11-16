@@ -40,7 +40,6 @@ $(function(){
 			self.val(setText);
 		}
 	});
-	//ここ田岡健太
     document.onkeydown = function(e) {
         var keyCode = false;
         if (e.keyCode == 18) {//ALTを押した時
@@ -77,11 +76,27 @@ const pasteText = (callback) => {
 	}
   }
 
-$(function(){//改行
+
+/*
+i like dog. bu
+t i don't like cat.
+so I like animal.
+  I am japanese.
+
+私は、犬がき
+らいだ。しかし良い。
+ なので、嫌いだ。
+*/
+$(function(){//改行&半角スペース削除
 	//Mousetrap.bind('ctrl+l',function(){
 		var btn1= $('#btn1');
 		btn1.on('click',function(){
-			$('#changeText').val($('#changeText').val().replace(/\r?\n/g, ' '))
+			//var str = $('#changeText').val().replace(/(\.\n)+(.)/g, '$1@@@$2').replace(/\.\n/+/\r?\n/g, '@@@').replace(/\.\r?\n/g, '. ').replace(/\r?\n/g, '')//.replace('@@@', '\.\n\n\n ')
+			for(var i=0;i<10;i++){
+				//var str = $('#changeText').val().replace(/(\.\r?\n\s+?)/g, '@@@').replace(/\.\r?\n/g, '. ').replace(/。(\r?\n\s+?)/g, '+++').replace(/。\r?\n/g, '。 ').replace(/\r?\n/g, '').replace('@@@', '\.\n').replace('+++', '。\n')
+				var str = $('#changeText').val().replace(/(\.\r?\n\s+?)/g, '@@@').replace(/\.\r?\n/g, '. ').replace(/\r?\n/g, '').replace('@@@', '\.\n')
+			}
+			$('#changeText').val(str)
 			var copyText = $('#changeText');
 			copyText.select();
   			document.execCommand("copy");
@@ -95,6 +110,47 @@ $(function(){//改行
 			// }
 		});
 	//});
+});
+
+$(function(){//改行削除
+	var btn5= $('#btn5');
+	btn5.on('click',function(){
+		for(var i=0;i<10;i++){
+			var str = $('#changeText').val().replace(/\n/g, ' ')
+		}
+		window.alert(str)
+		//$('#changeText').val(lines)
+		$('#changeText').val(str)
+		var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+
+$(function(){//空行削除
+	var btn4= $('#btn4');
+	btn4.on('click',function(){
+		// for(var i=0;i<10;i++){
+		// 	var str = $('#changeText').val().replace(/\n/g, '')
+		// }
+		var text = $('#changeText').val()
+		var lines = text.split('\n');
+		var str = ''
+		for ( var i = 0; i < lines.length; i++ ) {
+			if (lines[i] == '') {// 空行は無視する
+				continue;
+			}
+			str+=lines[i]
+			str+='\n'
+		}
+		window.alert(str)
+		//$('#changeText').val(lines)
+		$('#changeText').val(str)
+		var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
 });
 
 $(function(){//コピー
@@ -206,3 +262,19 @@ function countLength1(){
 function countLength2(){
 	document.getElementById("count2").innerText = document.querySelector('#Text').value.length+"文字";
 }
+
+
+$(function(){//コマンドラインの余計なものを除く
+	var btn3= $('#ForCmdL');
+	btn3.on('click',function(){
+        //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
+        var txt=$('#changeText').val().replace(/\$ /g,'')
+        txt=txt.replace(/\% /g,'');
+        txt=txt.replace(/\＄ /g,'');
+        console.log(txt);
+        $('#changeText').val(txt);
+        var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
