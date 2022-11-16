@@ -145,7 +145,7 @@ $(function(){//空行削除
 			str+=lines[i]
 			str+='\n'
 		}
-		window.alert(str)
+		//window.alert(str)
 		//$('#changeText').val(lines)
 		$('#changeText').val(str)
 		var copyText = $('#changeText');
