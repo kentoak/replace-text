@@ -118,7 +118,7 @@ $(function(){//改行削除
 		for(var i=0;i<10;i++){
 			var str = $('#changeText').val().replace(/\n/g, ' ')
 		}
-		window.alert(str)
+		//window.alert(str)
 		//$('#changeText').val(lines)
 		$('#changeText').val(str)
 		var copyText = $('#changeText');
