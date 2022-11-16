@@ -43,7 +43,7 @@ $(function(){
     document.onkeydown = function(e) {
         var keyCode = false;
         if (e.keyCode == 18) {//ALTを押した時
-			var btn1= $('#btn1');
+			var btn1= $('#btn5');
 			btn1.click();
 			//window.alert("テキストの内容をコピーしました")
         } else if (event.which) {
@@ -87,6 +87,23 @@ so I like animal.
 らいだ。しかし良い。
  なので、嫌いだ。
 */
+
+$(function(){//改行削除
+	var btn5= $('#btn5');
+	btn5.on('click',function(){
+		for(var i=0;i<10;i++){
+			var str = $('#changeText').val().replace(/\n/g, ' ')
+		}
+		//window.alert(str)
+		//$('#changeText').val(lines)
+		$('#changeText').val(str)
+		var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+
 $(function(){//改行&半角スペース削除
 	//Mousetrap.bind('ctrl+l',function(){
 		var btn1= $('#btn1');
@@ -111,22 +128,6 @@ $(function(){//改行&半角スペース削除
 		});
 	//});
 });
-
-$(function(){//改行削除
-	var btn5= $('#btn5');
-	btn5.on('click',function(){
-		for(var i=0;i<10;i++){
-			var str = $('#changeText').val().replace(/\n/g, ' ')
-		}
-		//window.alert(str)
-		//$('#changeText').val(lines)
-		$('#changeText').val(str)
-		var copyText = $('#changeText');
-		copyText.select();
-		document.execCommand("copy");
-	});
-});
-
 
 $(function(){//空行削除
 	var btn4= $('#btn4');
