@@ -42,19 +42,22 @@
 	position: absolute; left: 8px;  top: 5px
 }
 #btn4{
-	position: absolute; left: 60px;  top: 5px
+	position: absolute; left: 40px;  top: 5px
 }
 #btn1{
-	position: absolute; left: 110px; top: 5px
+	position: absolute; left: 72px; top: 5px
 }
 #btn2{
-	position: absolute; left: 174px; top: 5px
+	position: absolute; left: 134px; top: 5px
+}
+#btn7{
+	position: absolute; left: 179px; top: 5px
+}
+#btn6{
+	position: absolute; left: 229px; top: 5px
 }
 #btn3{
-	position: absolute; left: 220px; top: 5px
-}
-#ForCmdL{
-	position: absolute; left: 269px; top: 5px
+	position: absolute; left: 270px; top: 5px
 }
 
 
