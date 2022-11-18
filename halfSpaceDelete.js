@@ -147,7 +147,7 @@ $(function(){//空行削除
 		}
 		//window.alert(str)
 		//$('#changeText').val(lines)
-		$('#changeText').val(str)
+		$('#changeText').val(str.slice(0, -1))
 		var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
@@ -266,14 +266,36 @@ function countLength2(){
 
 
 $(function(){//コマンドラインの余計なものを除く
-	var btn3= $('#ForCmdL');
-	btn3.on('click',function(){
+	var btn6= $('#btn6');
+	btn6.on('click',function(){
         //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
         var txt=$('#changeText').val().replace(/\$ /g,'')
         txt=txt.replace(/\% /g,'');
         txt=txt.replace(/\＄ /g,'');
+		txt=txt.replace(/> /g,'');
+		//txt=txt.replace(/# /g,'');
+		txt=txt.replace(/\+ /g,'');
         console.log(txt);
         $('#changeText').val(txt);
+        var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+$(function(){//行頭と行末の空白スペースを削除
+	var btn7= $('#btn7');
+	btn7.on('click',function(){
+		var text = $('#changeText').val()
+		var lines = text.split('\n');
+		var str = ''
+		for ( var i = 0; i < lines.length; i++ ) {
+			txt=lines[i].replace(/^\s+/g, "")//文字列の先頭(前方/左側)にある空白文字だけを一括削除
+			txt=txt.replace(/\s+$/g, "");//文字列の末尾(後方/右側)にある空白文字だけを一括削除
+			str+=txt
+			str+='\n'
+		}
+        $('#changeText').val(str.slice(0, -1));
         var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
