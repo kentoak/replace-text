@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="css/contents.css">
 <script src="mousetrap.min.js"></script>
 <script src="./mousetrap/mousetrap.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script src="https://black-flag.net/wp-content/themes/BlackFlag/js/ga.js"></script>
+<script src="./icheck.js"></script>
+<script type='text/javascript' src='./replace.js'></script>
+<link href="./red.css" rel="stylesheet">
 </head>
 <body>
     <input type="button" value="NL" id="btn5">
@@ -16,6 +20,7 @@
     <input type="button" value="cnt" id="btn3">
     <input type="button" value="Cmd" id="btn6">
     <input type="button" value="~Spc~" id="btn7">
+    <input type="button" value="ALL" id="btn8">
     <section>
         <div id="textArea">
             <form>
@@ -23,33 +28,57 @@
             </form>
         </div>
         <div id="count1">文字数</div>
-        <div id="rireki">History1</div>
+        <div id="rireki" style="font-size:7pt">History1</div>
         <div id="textArea1">
             <form>
                 <textarea id="savedText1" name="savedText1" ></textarea>
             </form>
         </div>
-        <div id="rireki">History2</div>
+        <div id="rireki" style="font-size:7pt">History2</div>
         <div id="textArea1">
             <form>
                 <textarea id="savedText2" name="savedText2" ></textarea>
             </form>
         </div>
-        <div id="rireki">History3</div>
+        <div id="rireki" style="font-size:7pt">History3</div>
         <div id="textArea1">
             <form>
                 <textarea id="savedText3" name="savedText3" ></textarea>
             </form>
         </div>
-        <div id="meeee">Memo</div>
-        <div id="textArea2">
-            <form>
-                <textarea id="Text" onkeyup="countLength2();" name="Text"></textarea>
-            </form>
+        <br>
+
+        <hr class="replaceWord">
+        <div id="property" bis_skin_checked="1"></div>
+            <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
+            →
+            <input id="after-txt" placeholder="置換後word①" type="text" value="">
+            <label><input id="check" type="checkbox" checked style="position: absolute; opacity: 0;"></label>
+            <br>
+            <input id="before-txt2" placeholder="置換前word②" type="text" value="" style="margin-right: 0;"/>
+            →
+            <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
+            <label><input id="check2" type="checkbox" checked style="position: absolute; opacity: 0;"></label>
+            <br />
         </div>
+        <br>
+        <div style="display: flex; flex-wrap: nowrap;"> <!-- ここに親のdivを作ってstyleにdisplay:flexを入れる -->
+            <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before　</div>
+            <div id="clear-button"class="button" style="font-size:7pt; display: flex;">クリア</div>
+        </div>
+        <textarea id="input" spellcheck="false"></textarea>
+        <div id="meeee1" style="font-size:7pt">After</div>
+        <textarea id="preview" readonly=""></textarea>
+		<footer id="footer">
+			<p>
+                
+            </p>
+		</footer>
+	</div>
+        <hr class="replaceWord">
         <!-- <div id="count2">文字数</div> -->
     </section>
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <!-- <script type="text/javascript" src="jquery-3.6.0.min.js"></script> -->
     <script src="halfSpaceDelete.js",charset="utf-8"></script>
     </script>
 </body>

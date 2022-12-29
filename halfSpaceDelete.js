@@ -88,7 +88,7 @@ so I like animal.
  なので、嫌いだ。
 */
 
-$(function(){//改行削除
+$(function(){//改行削除 "NL"
 	var btn5= $('#btn5');
 	btn5.on('click',function(){
 		for(var i=0;i<10;i++){
@@ -103,8 +103,7 @@ $(function(){//改行削除
 	});
 });
 
-
-$(function(){//改行&半角スペース削除
+$(function(){//改行&半角スペース削除 "NL&Spc"
 	//Mousetrap.bind('ctrl+l',function(){
 		var btn1= $('#btn1');
 		btn1.on('click',function(){
@@ -129,7 +128,7 @@ $(function(){//改行&半角スペース削除
 	//});
 });
 
-$(function(){//空行削除
+$(function(){//空行削除 "BL"
 	var btn4= $('#btn4');
 	btn4.on('click',function(){
 		// for(var i=0;i<10;i++){
@@ -149,6 +148,56 @@ $(function(){//空行削除
 		//$('#changeText').val(lines)
 		$('#changeText').val(str.slice(0, -1))
 		var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+$(function(){//行頭と行末の空白スペースを削除 "~Spc~"
+	var btn7= $('#btn7');
+	btn7.on('click',function(){
+		var text = $('#changeText').val()
+		var lines = text.split('\n');
+		var str = ''
+		for ( var i = 0; i < lines.length; i++ ) {
+			txt=lines[i].replace(/^\s+/g, "")//文字列の先頭(前方/左側)にある空白文字だけを一括削除
+			txt=txt.replace(/\s+$/g, "");//文字列の末尾(後方/右側)にある空白文字だけを一括削除
+			str+=txt
+			str+='\n'
+		}
+        $('#changeText').val(str.slice(0, -1));
+        var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+$(function(){//すべての改行削除 "ALL"
+	var btn5= $('#btn8');
+	btn5.on('click',function(){
+		for(var i=0;i<10;i++){
+			var str = $('#changeText').val().replace(/ /g, '')
+		}
+		$('#changeText').val(str)
+		var copyText = $('#changeText');
+		copyText.select();
+		document.execCommand("copy");
+	});
+});
+
+$(function(){//コマンドラインの余計なものを除く "Cmd"
+	var btn6= $('#btn6');
+	btn6.on('click',function(){
+        //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
+        var txt=$('#changeText').val().replace(/\$ /g,'')
+        txt=txt.replace(/\% /g,'');
+        txt=txt.replace(/\＄ /g,'');
+		txt=txt.replace(/> /g,'');
+		//txt=txt.replace(/# /g,'');
+		txt=txt.replace(/\+ /g,'');
+        console.log(txt);
+        $('#changeText').val(txt);
+        var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
 	});
@@ -263,41 +312,3 @@ function countLength1(){
 function countLength2(){
 	document.getElementById("count2").innerText = document.querySelector('#Text').value.length+"文字";
 }
-
-
-$(function(){//コマンドラインの余計なものを除く
-	var btn6= $('#btn6');
-	btn6.on('click',function(){
-        //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
-        var txt=$('#changeText').val().replace(/\$ /g,'')
-        txt=txt.replace(/\% /g,'');
-        txt=txt.replace(/\＄ /g,'');
-		txt=txt.replace(/> /g,'');
-		//txt=txt.replace(/# /g,'');
-		txt=txt.replace(/\+ /g,'');
-        console.log(txt);
-        $('#changeText').val(txt);
-        var copyText = $('#changeText');
-		copyText.select();
-		document.execCommand("copy");
-	});
-});
-
-$(function(){//行頭と行末の空白スペースを削除
-	var btn7= $('#btn7');
-	btn7.on('click',function(){
-		var text = $('#changeText').val()
-		var lines = text.split('\n');
-		var str = ''
-		for ( var i = 0; i < lines.length; i++ ) {
-			txt=lines[i].replace(/^\s+/g, "")//文字列の先頭(前方/左側)にある空白文字だけを一括削除
-			txt=txt.replace(/\s+$/g, "");//文字列の末尾(後方/右側)にある空白文字だけを一括削除
-			str+=txt
-			str+='\n'
-		}
-        $('#changeText').val(str.slice(0, -1));
-        var copyText = $('#changeText');
-		copyText.select();
-		document.execCommand("copy");
-	});
-});
