@@ -1,4 +1,3 @@
-////Replace
 $(function () {
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_flat-red',
@@ -47,7 +46,6 @@ $(function () {
 			$("#before-txt4,#after-txt4").attr("disabled","disabled");
 		}
 	});
-
 	$("#clear-button").click(function() {
 	    $("#input").val("");
 		replace_func();
@@ -65,8 +63,7 @@ $(function () {
 });
 
 function escape_func(a){
-a = a.replace("|","\\|","g");
-
+	a = a.replace("|","\\|","g");
 }
 
 function replace_func(){
@@ -80,11 +77,12 @@ function replace_func(){
 	var before_txt4 = $("#before-txt4").val();
 	var after_txt4 = $("#after-txt4").val();
 	var output_txt = input_txt;
-before_txt = before_txt.replace("|","\\|","g");
 
+	before_txt = before_txt.replace("|","\\|","g");
 	if($("#check").prop('checked') && before_txt !== ""){
 		output_txt = output_txt.split(before_txt).join(after_txt);
 	}
+
 	if($("#check2").prop('checked') && before_txt2 !== ""){
 		output_txt = output_txt.split(before_txt2).join(after_txt2);
 	}
@@ -96,10 +94,42 @@ before_txt = before_txt.replace("|","\\|","g");
 	if($("#check4").prop('checked') && before_txt4 !== ""){
 		output_txt = output_txt.split(before_txt4).join(after_txt4);
 	}
-
 	if(	input_txt !== ""){
 		$("#preview").text(output_txt);
 	}else{$("#preview").text("");}
 
-
 };
+
+$(function(){
+	var btn= $('#submit-button1');
+	btn.on('click',function(){
+		var input_txt = $("#input").val();
+		// window.alert(input_txt)
+		var before_txt = $("#before-txt").val();
+		var after_txt = $("#after-txt").val();
+		var before_txt2 = $("#before-txt2").val();
+		var after_txt2 = $("#after-txt2").val();
+		var output_txt = input_txt;
+		before_txt = before_txt.replace("|","\\|","g");
+		if($("#check").prop('checked') && before_txt !== ""){
+			output_txt = output_txt.split(before_txt).join(after_txt);
+		}
+		if($("#check2").prop('checked') && before_txt2 !== ""){
+			output_txt = output_txt.split(before_txt2).join(after_txt2);
+		}
+		$("#preview").text(output_txt);
+    $("#preview").focus();
+    var copyText = $('#preview');
+		copyText.select();
+		document.execCommand("copy");
+		// window.alert(output_txt)
+	});
+});
+
+$(function(){
+  $("#clear-button1").click(function() {
+    $("#input").val("");
+    $("#preview").val("");
+    $('#input').trigger("focus");
+  });
+});

@@ -165,8 +165,8 @@ $(function(){//行頭と行末の空白スペースを削除 "~Spc~"
 			str+=txt
 			str+='\n'
 		}
-        $('#changeText').val(str.slice(0, -1));
-        var copyText = $('#changeText');
+    $('#changeText').val(str.slice(0, -1));
+    var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
 	});
@@ -188,16 +188,16 @@ $(function(){//すべての改行削除 "ALL"
 $(function(){//コマンドラインの余計なものを除く "Cmd"
 	var btn6= $('#btn6');
 	btn6.on('click',function(){
-        //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
-        var txt=$('#changeText').val().replace(/\$ /g,'')
-        txt=txt.replace(/\% /g,'');
-        txt=txt.replace(/\＄ /g,'');
-		txt=txt.replace(/> /g,'');
+    //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
+    var txt=$('#changeText').val().replace(/\$ /g,'')
+    txt=txt.replace(/\% /g,'');
+    txt=txt.replace(/\＄ /g,'');
+    txt=txt.replace(/> /g,'');
 		//txt=txt.replace(/# /g,'');
 		txt=txt.replace(/\+ /g,'');
-        console.log(txt);
-        $('#changeText').val(txt);
-        var copyText = $('#changeText');
+    console.log(txt);
+    $('#changeText').val(txt);
+    var copyText = $('#changeText');
 		copyText.select();
 		document.execCommand("copy");
 	});
@@ -312,3 +312,11 @@ function countLength1(){
 function countLength2(){
 	document.getElementById("count2").innerText = document.querySelector('#Text').value.length+"文字";
 }
+
+
+
+
+
+//////////////////////
+
+/////////////////////

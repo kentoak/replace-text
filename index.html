@@ -3,14 +3,23 @@
 <meta charset="utf-8"/>
 <head>
     <title>memo</title><!--ブラウザで表示される名前-->
-<link rel="stylesheet" href="css/contents.css">
+
 <script src="mousetrap.min.js"></script>
 <script src="./mousetrap/mousetrap.js"></script>
+<!-- <script src="https://black-flag.net/wp-content/themes/BlackFlag/js/ga.js"></script> -->
+<!-- <script type='text/javascript' src='https://code.jquery.com/jquery-1.10.0.min.js'></script> -->
+
+<!-- 複数のjqueryバージョンを共存させる -->
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
-<script src="https://black-flag.net/wp-content/themes/BlackFlag/js/ga.js"></script>
-<script src="./icheck.js"></script>
+<script type="text/javascript">    
+var $1111 = $.noConflict(true);
+</script>
+<script type='text/javascript' src="./icheck.js"></script>
 <script type='text/javascript' src='./replace.js'></script>
-<link href="./red.css" rel="stylesheet">
+<link href="css/red.css" rel="stylesheet">
+<link href="css/contents.css" rel="stylesheet">
+
 </head>
 <body>
     <input type="button" value="NL" id="btn5">
@@ -46,40 +55,51 @@
                 <textarea id="savedText3" name="savedText3" ></textarea>
             </form>
         </div>
-        <br>
-
+        <!-- これないとだめらしい -->
+        <div id="meeee" style="font-size:7pt">Memo</div>
+        <div id="textArea2">
+        <form>
+        <textarea id="Text" onkeyup="countLength2();" name="Text"></textarea>
+        </form>
+        </div>
+        
         <hr class="replaceWord">
-        <div id="property" bis_skin_checked="1"></div>
-            <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
-            →
-            <input id="after-txt" placeholder="置換後word①" type="text" value="">
-            <label><input id="check" type="checkbox" checked style="position: absolute; opacity: 0;"></label>
+            <div id="property" bis_skin_checked="1"></div>
+                <label><input id="check" type="checkbox" checked></label>
+                <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
+                →
+                <input id="after-txt" placeholder="置換後word①" type="text" value="">
+                <br>
+                <label><input id="check2" type="checkbox" checked></label>
+                <input id="before-txt2" placeholder="置換前word②" type="text" value="" style="margin-right: 0;"/>
+                →
+                <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
+            </div>
             <br>
-            <input id="before-txt2" placeholder="置換前word②" type="text" value="" style="margin-right: 0;"/>
-            →
-            <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
-            <label><input id="check2" type="checkbox" checked style="position: absolute; opacity: 0;"></label>
-            <br />
-        </div>
-        <br>
-        <div style="display: flex; flex-wrap: nowrap;"> <!-- ここに親のdivを作ってstyleにdisplay:flexを入れる -->
-            <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before　</div>
-            <div id="clear-button"class="button" style="font-size:7pt; display: flex;">クリア</div>
-        </div>
-        <textarea id="input" spellcheck="false"></textarea>
-        <div id="meeee1" style="font-size:7pt">After</div>
-        <textarea id="preview" readonly=""></textarea>
-		<footer id="footer">
-			<p>
-                
-            </p>
-		</footer>
-	</div>
-        <hr class="replaceWord">
+            <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before  </div>
+            <div style="display: flex; flex-wrap: nowrap;"> 
+                <input type="button" value="クリア" id="clear-button1">
+                <!-- <input id="select-check" type="checkbox" checked>クリックで全選択</label> -->
+                <input type="button" value="変換" id="submit-button1">
+            </div>
+            <textarea id="input" spellcheck="false"></textarea>
+            <!-- <textarea id="input">ここに文字を入力してください。&#13;&#13;指定の文字を一括で置き換えます。&#13;文字っ。</textarea> -->
+            <div id="meeee1" style="font-size:7pt">After</div>
+            <div class="to"></div>
+            <textarea id="preview" readonly=""></textarea>
+            <footer id="footer">
+                <p>
+                </p>
+            </footer>
+	    </div>
+    <hr class="replaceWord">
         <!-- <div id="count2">文字数</div> -->
     </section>
+
     <!-- <script type="text/javascript" src="jquery-3.6.0.min.js"></script> -->
+    <!-- ボタン系はjquery-3.6.0.min.jsじゃないとだめらしいがリアルタイム変換はjquery-1.10.0.min.jsじゃないとだめらしい -->
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> -->
+
     <script src="halfSpaceDelete.js",charset="utf-8"></script>
-    </script>
 </body>
 </html>
