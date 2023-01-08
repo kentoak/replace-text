@@ -1,5 +1,5 @@
 # replace-text
-`Alt+M`でポップアップのページを呼び出し、テキストボックスにペーストした瞬間に全角に挟まれた半角スペースを削除したり、ピリオドカンマと句読点を正しくしてくれたりｍテキスト置換をしてくれるChrome拡張。
+`Alt+M`（`⌥+M`）でポップアップのページを呼び出し、テキストボックスにペーストした瞬間に全角に挟まれた半角スペースを削除したり、ピリオドカンマと句読点を正しくしてくれたりｍテキスト置換をしてくれるChrome拡張。
 ![image](https://user-images.githubusercontent.com/43945931/203188902-bce13cde-7c1c-4d92-be19-661773d2af88.png)
 
 * 全角に挟まれた半角スペースを削除（テキストボックスにペーストすると自動で半角スペースが削除される。）
@@ -10,7 +10,7 @@
 
 ![image](https://user-images.githubusercontent.com/43945931/209933073-6721fe98-3093-4acb-ac63-42daae99a5ec.png)
 
-`Alt+M`で呼び出す。Macだと`Option+M`。
+`Alt+M`で呼び出す。Macだと`⌥+M`。
 
 ## 機能
 
@@ -30,7 +30,7 @@ e.g.)
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/316390/f871ddaf-7e28-17ac-590a-fb726e0f3ee7.png)
 
 * `NL`
-    改行→半角スペースにする。Altを押してもこれが実行され、さらにクリップボードにコピーされる。
+    改行→半角スペースにする。Alt（⌥）キーを連打するとこれが実行され、さらにクリップボードにコピーされる。
     e.g.) 
     ```
     I have a pen.
@@ -99,6 +99,9 @@ e.g.)
 
 ### 文字列置換
 置換前wordに置換したいと思っている文字列を入力し、置換後wordに変換する文字列を入力。Beforeの欄に、テキストを入れると、Afterに置換後のテキストがリアルタイムで出力される。`クリア`でテキストボックスがクリアされ、`変換`を押すとクリップボードにコピーされる。
+
+### Comming soon...
+英語のLowerとUpper、英語を最近流行りの　KonAkaNjIno bUnSHoU にする機能とか。
 
 # Chrome拡張の導入方法
 1. [リポジトリ](https://github.com/kentoak/replace-text)をGitHubからクローンするかzipファイルをダウンロードしてunzip。
