@@ -214,9 +214,8 @@ $(function () {
     $("input[name='sponge-check']").change(function() {
         sponge_func();
     });
-
-    $("#input").keyup(function() {
-        rpl1=$("#check").prop('checked')
+	$("#input").change(function() {
+		rpl1=$("#check").prop('checked')
         rpl2=$("#check2").prop('checked')
         ul1=$("#check3").prop('checked')
         ul2=$("#check4").prop('checked')
@@ -224,11 +223,15 @@ $(function () {
         hf2=$("#check7").prop('checked')
         sponge=$("#check5").prop('checked')
         insert1=$("#check8").prop('checked')
-        insert2=$("#check8").prop('checked')
+        insert2=$("#check9").prop('checked')
         insert_before_txt=$("#insert_before-txt").val();
 	    insert_after_txt=$("#insert_after-txt").val();
+		before_txt = $("#before-txt").val();
+		after_txt = $("#after-txt").val();
+		before_txt2 = $("#before-txt2").val();
+		after_txt2 = $("#after-txt2").val();
         
-        if ((rpl1 && before_txt !== "" && after_txt !== "")||(rpl2 && before_txt2 !== "" && after_txt2 !== "")){
+        if ((rpl1&&before_txt!==""&&after_txt!=="")||(rpl2&&before_txt2!==""&&after_txt2!=="")){
             replace_func();
         }else{
             if (ul1 || ul2){
@@ -241,7 +244,48 @@ $(function () {
                         sponge_func();
                     }
                     else{
-                        if ((insert1 && insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                            insert_func()
+                        }else{
+                            $("#preview").text($("#input").val());
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    $("#input").keyup(function() {
+        rpl1=$("#check").prop('checked')
+        rpl2=$("#check2").prop('checked')
+        ul1=$("#check3").prop('checked')
+        ul2=$("#check4").prop('checked')
+        hf1=$("#check6").prop('checked')
+        hf2=$("#check7").prop('checked')
+        sponge=$("#check5").prop('checked')
+        insert1=$("#check8").prop('checked')
+        insert2=$("#check9").prop('checked')
+        insert_before_txt=$("#insert_before-txt").val();
+	    insert_after_txt=$("#insert_after-txt").val();
+		before_txt = $("#before-txt").val();
+		after_txt = $("#after-txt").val();
+		before_txt2 = $("#before-txt2").val();
+		after_txt2 = $("#after-txt2").val();
+        
+        if ((rpl1&&before_txt!==""&&after_txt!=="")||(rpl2&&before_txt2!==""&&after_txt2!=="")){
+            replace_func();
+        }else{
+            if (ul1 || ul2){
+                upper_lower_func();
+            }else{
+                if (hf1 || hf2){
+                    half_full_func();
+                }else{
+                    if (sponge){
+                        sponge_func();
+                    }
+                    else{
+                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
                             insert_func()
                         }else{
                             $("#preview").text($("#input").val());
