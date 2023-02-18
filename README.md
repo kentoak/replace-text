@@ -98,25 +98,30 @@ e.g.)
 
 ### 文字列置換
 置換前wordに置換したいと思っている文字列を入力し、置換後wordに変換する文字列を入力。Beforeの欄に、テキストを入れると、Afterに置換後のテキストがリアルタイムで出力される。`Clear`でテキストボックスがクリアされ、`Copy`を押すとクリップボードにコピーされる。
+
 ![image](https://user-images.githubusercontent.com/43945931/219882632-b8d83389-3792-4890-ad3b-ad0f5cdb60ee.png)
 
 
 ### UpperCase & LowerCase
 入力を大文字・小文字に変換する。
+
 ![image](https://user-images.githubusercontent.com/43945931/219880505-c83e36b3-a301-49fc-888a-fe2a58cd203e.png)
 
 
 ### 半角to全角 & 全角to半角
 入力を半角→全角、全角→半角に変換する。
+
 ![image](https://user-images.githubusercontent.com/43945931/219880517-eec2d81b-7e1e-414d-9f5d-dc5f4c9f0aef.png)
 
 
 ### SpongeCase
 入力をsPoNgEcAsEのような、大文字と小文字がランダムに混じった文にする。これは皮肉めいたネットミームで使われ、SpOnGeBoB mEmEと呼ばれる。
+
 ![image](https://user-images.githubusercontent.com/43945931/219880535-edf94b36-e3b5-4064-a406-674b756474f9.png)
 
 ### Insert
 行頭または行末に文字を挿入する
+
 ![image](https://user-images.githubusercontent.com/43945931/219882448-f19ec6bd-e34a-4f2d-b7ff-01ed87adac6a.png)
 
 
