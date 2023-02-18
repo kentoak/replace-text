@@ -2,21 +2,15 @@
 <html xml:lang="ja" lang="ja">
 <meta charset="utf-8"/>
 <head>
-    <title>memo</title><!--ブラウザで表示される名前-->
+    <title>textReplaceMemo</title>
 
-<script src="mousetrap.min.js"></script>
-<script src="./mousetrap/mousetrap.js"></script>
-<!-- <script src="https://black-flag.net/wp-content/themes/BlackFlag/js/ga.js"></script> -->
-<!-- <script type='text/javascript' src='https://code.jquery.com/jquery-1.10.0.min.js'></script> -->
-
-<!-- 複数のjqueryバージョンを共存させる -->
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
-<script type="text/javascript">    
-var $1111 = $.noConflict(true);
-</script>
-<script type='text/javascript' src="./icheck.js"></script>
-<script type='text/javascript' src='./replace.js'></script>
+<script type="text/javascript">var $1111 = $.noConflict(true);</script>
+<!-- <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script> -->
+<!-- <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css"> -->
+<script src="js/multiple-select.min.js"></script>
+<link rel="stylesheet" href="css/multiple-select.min.css">
 <link href="css/red.css" rel="stylesheet">
 <link href="css/contents.css" rel="stylesheet">
 
@@ -36,7 +30,7 @@ var $1111 = $.noConflict(true);
                 <textarea id="changeText" onkeyup="countLength1();" name="changeText" onfocus="this.select();" onclick="this.select();" autofocus></textarea>
             </form>
         </div>
-        <div id="count1">文字数</div>
+        <div id="count1"><font size="2">文字数</font></div>
         <div id="rireki" style="font-size:7pt">History1</div>
         <div id="textArea1">
             <form>
@@ -55,16 +49,9 @@ var $1111 = $.noConflict(true);
                 <textarea id="savedText3" name="savedText3" ></textarea>
             </form>
         </div>
-        <!-- これないとだめらしい -->
-        <div id="meeee" style="font-size:7pt">Memo</div>
-        <div id="textArea2">
-        <form>
-        <textarea id="Text" onkeyup="countLength2();" name="Text"></textarea>
-        </form>
-        </div>
         
         <hr class="replaceWord">
-            <div id="property" bis_skin_checked="1"></div>
+            <div id="property" bis_skin_checked="1">
                 <label><input id="check" type="checkbox" checked></label>
                 <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
                 →
@@ -75,15 +62,54 @@ var $1111 = $.noConflict(true);
                 →
                 <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
             </div>
-            <br>
+            <p class="dotted-bottom"></p>
+            <div id="property">
+                <label><input id="check4" type="checkbox" name="ul-check" class="ul-check"></label>
+                <select id="al-type">
+                    <option value="1">lowerCase</option>
+                </select>
+                <label><input id="check3" type="checkbox" name="ul-check" class="ul-check"></label>
+                <select id="al-type">
+                    <option value="1">upperCase</option>
+                </select>
+            </div>
+            <div id="property">
+                <label><input id="check6" type="checkbox" name="hf-check" class="hf-check"></label>
+                <select id="al-type">
+                    <option value="1">半角to全角</option>
+                </select>
+                <label><input id="check7" type="checkbox" name="hf-check" class="hf-check"></label>
+                <select id="al-type">
+                    <option value="1">全角to半角</option>
+                </select>
+                <select id="select-multiple" multiple="multiple">
+                    <option value="1" selected name="number">数字</option>
+                    <option value="2" selected name="latin">英字</option>
+                    <option value="3" selected name="kana">カナ</option>
+                    <option value="4" selected name="symbol1">ASCII記号</option>
+                    <option value="5" selected name="symbol2">非ASCII記号</option>
+                    <option value="6" selected name="space">空白</option>
+                </select>
+            </div>
+            <div id="property">
+                <label><input id="check5" type="checkbox" name="sponge-check" class="sponge-check"></label>
+                <select id="al-type">
+                    <option value="1">sPoNgEcAsE</option>
+                </select>
+            </div>
+            <div id="property">
+                <label><input id="check8" type="checkbox" name="insert-check" class="insert-check"></label>
+                <input id="insert_before-txt" placeholder="行頭に挿入する文字" type="text" value="" style="margin-right: 0;">
+                <label><input id="check9" type="checkbox" name="insert-check" class="insert-check"></label>
+                <input id="insert_after-txt" placeholder="行末に挿入する文字" type="text" value="">
+            </div>
+            <!-- <br> -->
             <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before  </div>
             <div style="display: flex; flex-wrap: nowrap;"> 
-                <input type="button" value="クリア" id="clear-button1">
-                <!-- <input id="select-check" type="checkbox" checked>クリックで全選択</label> -->
-                <input type="button" value="変換" id="submit-button1">
+                <input type="button" value="Clear" id="clear-button1">
+                <input type="button" value="Copy" id="submit-button1">
             </div>
             <textarea id="input" spellcheck="false"></textarea>
-            <!-- <textarea id="input">ここに文字を入力してください。&#13;&#13;指定の文字を一括で置き換えます。&#13;文字っ。</textarea> -->
             <div id="meeee1" style="font-size:7pt">After</div>
             <div class="to"></div>
             <textarea id="preview" readonly=""></textarea>
@@ -93,13 +119,17 @@ var $1111 = $.noConflict(true);
             </footer>
 	    </div>
     <hr class="replaceWord">
-        <!-- <div id="count2">文字数</div> -->
+    <div id="meeee" style="font-size:7pt">Memo</div>
+    <div id="textArea2">
+        <form>
+            <textarea id="Text" onkeyup="countLength2();" name="Text"></textarea>
+        </form>
+    </div>
     </section>
 
-    <!-- <script type="text/javascript" src="jquery-3.6.0.min.js"></script> -->
-    <!-- ボタン系はjquery-3.6.0.min.jsじゃないとだめらしいがリアルタイム変換はjquery-1.10.0.min.jsじゃないとだめらしい -->
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> -->
-
+    <script type='text/javascript' src="./js/icheck.js"></script>
+    <script type='text/javascript' src='./js/caseChange.js'></script>
+    <script type='text/javascript' src='./js/dropdownForAll.js'></script>
     <script src="halfSpaceDelete.js",charset="utf-8"></script>
 </body>
 </html>

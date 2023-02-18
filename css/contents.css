@@ -16,7 +16,7 @@
 	position: relative; left: 0px; top: 17px;
 	padding: 1px;
 	width: 350px;
-	height: 95px;
+	height: 85px;
 	background: #fff;
 	border: #999 1px solid;
 	border-radius:5px;
@@ -42,10 +42,16 @@
 	padding: 1px; */
 	padding: 1px;
 	width: 350px;
-	height: 75px;
+	height: 55px;
 	background: #fff;
 	border: #999 1px solid;
 	border-radius:5px;
+}
+
+#before-txt,#after-txt,#before-txt2,#after-txt2,#insert_before-txt,#insert_after-txt {
+	height: 15px;
+	/* border-radius:5px; */
+	padding: 1px;
 }
 
 #btn5{
@@ -72,7 +78,28 @@
 #btn3{
 	position: absolute; left: 306px; top: 5px
 }
- #count1{  /*文字数*/
+#count1{  /*文字数*/
 	position: relative; left: 320px; top: 15px;
 }
+#submit-button1,#clear-button1{
+	height: 20px;
+	padding: 1px;
+}
 
+p.dotted-bottom {
+	border-bottom: dotted;
+	padding: .05rem;
+	margin: .1rem;
+}
+
+body{
+	font-family : "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",Helvetica,Arial,Sans-Serif;
+	background-color: #EFECE7;
+	color: #626F5D;
+	font-size: 14px;
+	line-height: 1.5;
+}
+textarea,input,select{
+	border: 1px solid #ddd;
+	font-family : "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",Helvetica,Arial,Sans-Serif;
+}
