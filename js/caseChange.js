@@ -205,6 +205,24 @@ $(function () {
     selectOne_hfCheck()
     selectOne_ulCheck()
     selectOne_spongeCheck() 
+    $("#before-txt").change(function() {
+        replace_func();
+    });
+    $("#after-txt").change(function() {
+        replace_func();
+    });
+    $("#after-txt").keyup(function() {
+        replace_func();
+    });
+    $("#before-txt2").change(function() {
+        replace_func();
+    });
+    $("#after-txt2").change(function() {
+        replace_func();
+    });
+    $("#after-txt2").keyup(function() {
+        replace_func();
+    });
 	$("input[name='hf-check']").change(function() {
         half_full_func();
     });
@@ -213,6 +231,9 @@ $(function () {
     });
     $("input[name='sponge-check']").change(function() {
         sponge_func();
+    });
+    $("input[name='insert-check']").change(function() {
+        insert_func();
     });
 	$("#input").change(function() {
 		rpl1=$("#check").prop('checked')
