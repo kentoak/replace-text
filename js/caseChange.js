@@ -148,12 +148,12 @@ function half_full_func(){
 	var input_txt = $("#input").val();
 	var output_txt = input_txt;
 	var type = {
-		number: $("#select-multiple option[name='number']").val(),
-		latin: $("#select-multiple option[name='latin']").val(),
-		kana: $("#select-multiple option[name='kana']").val(),
-		symbol1: $("#select-multiple option[name='symbol1']").val(),
-		symbol2: $("#select-multiple option[name='symbol1']").val(),
-		space: $("#select-multiple option[name='space']").val()
+		number: $("#select-multiple option[name='number']").prop('selected'),
+		latin: $("#select-multiple option[name='latin']").prop('selected'),
+		kana: $("#select-multiple option[name='kana']").prop('selected'),
+		symbol1: $("#select-multiple option[name='symbol1']").prop('selected'),
+		symbol2: $("#select-multiple option[name='symbol1']").prop('selected'),
+		space: $("#select-multiple option[name='space']").prop('selected')
 	};
 	if($("#check6").prop('checked')){
 		output_txt = Convert(output_txt, false, type);
