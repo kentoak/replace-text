@@ -30,7 +30,12 @@
                 <textarea id="changeText" onkeyup="countLength1();" name="changeText" onfocus="this.select();" onclick="this.select();" autofocus></textarea>
             </form>
         </div>
-        <div id="count1"><font size="2">文字数</font></div>
+        <div id="count1">
+            <font size="1.4">文字数</font>
+        </div>
+        <div id="explanation">
+            <font size="0.2">NL：改行→半角Spc, BL：空行削除, NL&Spc：改行&半角Spc削除<br>ALL：全改行削除, Cmd：行頭の'＄'・'%'・'>'を除く</font>
+        </div>
         <div id="rireki" style="font-size:7pt">History1</div>
         <div id="textArea1">
             <form>
@@ -49,7 +54,6 @@
                 <textarea id="savedText3" name="savedText3" ></textarea>
             </form>
         </div>
-        
         <hr class="replaceWord">
             <div id="property" bis_skin_checked="1">
                 <label><input id="check" type="checkbox" checked></label>
@@ -66,11 +70,11 @@
             <div id="property">
                 <label><input id="check4" type="checkbox" name="ul-check" class="ul-check"></label>
                 <select id="al-type">
-                    <option value="1">lowerCase</option>
+                    <option value="1">lower</option>
                 </select>
                 <label><input id="check3" type="checkbox" name="ul-check" class="ul-check"></label>
                 <select id="al-type">
-                    <option value="1">upperCase</option>
+                    <option value="1">upper</option>
                 </select>
             </div>
             <div id="property">
@@ -94,7 +98,7 @@
             <div id="property">
                 <label><input id="check5" type="checkbox" name="sponge-check" class="sponge-check"></label>
                 <select id="al-type">
-                    <option value="1">sPoNgEcAsE</option>
+                    <option value="1">sPoNgE</option>
                 </select>
             </div>
             <div id="property">
@@ -104,8 +108,8 @@
                 <input id="insert_after-txt" placeholder="行末に挿入する文字" type="text" value="">
             </div>
             <!-- <br> -->
-            <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before  </div>
             <div style="display: flex; flex-wrap: nowrap;"> 
+                <div id="meeee" style="font-size:7pt; display: flex; flex-wrap: nowrap;">Before    </div>
                 <input type="button" value="Clear" id="clear-button1">
                 <input type="button" value="Copy" id="submit-button1">
             </div>

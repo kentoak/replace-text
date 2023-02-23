@@ -10,14 +10,14 @@ $(function () {
     });
     $(".select-choice").css({
         width: '110',
-        height: '18'
+        height: '16'
     });
     $(".ms-choice").css({
 		width: '110',
-		height: '18'
+		height: '16'
 	});
 	$(".ms-choice").css({
-        height: "18px",
+        height: "16px",
         margin: '4px'
     });
 });

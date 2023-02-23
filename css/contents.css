@@ -85,13 +85,26 @@
 	height: 20px;
 	padding: 1px;
 }
-
+.replaceWord{
+	/* padding: .05rem; */
+	margin: .1rem;
+}
+#check5,#check4,#check6,#check8{
+	padding: .01rem;
+	margin: .05rem;
+}
+#explanation{
+	margin: 0rem;
+	line-height:.9;
+}
+#al-type{
+	width: 95px;
+}
 p.dotted-bottom {
 	border-bottom: dotted;
 	padding: .05rem;
 	margin: .1rem;
 }
-
 body{
 	font-family : "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",Helvetica,Arial,Sans-Serif;
 	background-color: #EFECE7;

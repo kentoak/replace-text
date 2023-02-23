@@ -193,8 +193,8 @@ $(function(){//コマンドラインの余計なものを除く "Cmd"
     txt=txt.replace(/\% /g,'');
     txt=txt.replace(/\＄ /g,'');
     txt=txt.replace(/> /g,'');
-		//txt=txt.replace(/# /g,'');
-		txt=txt.replace(/\+ /g,'');
+	//txt=txt.replace(/# /g,'');
+	//txt=txt.replace(/\+ /g,'');
     console.log(txt);
     $('#changeText').val(txt);
     var copyText = $('#changeText');
