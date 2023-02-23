@@ -1,14 +1,9 @@
 # replace-text
 `Alt+M`（`⌥+M`）でポップアップのページを呼び出し、テキストボックスにペーストした瞬間に全角に挟まれた半角スペースを削除したり、ピリオドカンマと句読点を正しくしてくれたりｍテキスト置換をしてくれるChrome拡張。
-![image](https://user-images.githubusercontent.com/43945931/203188902-bce13cde-7c1c-4d92-be19-661773d2af88.png)
 
 * 全角に挟まれた半角スペースを削除（テキストボックスにペーストすると自動で半角スペースが削除される。）
 * 改行などの削除
 * テキスト置換する（2つまで）
-
-![image](https://user-images.githubusercontent.com/43945931/209933067-85ac5174-5b77-496f-bf2c-e019bf52828e.png)
-
-![image](https://user-images.githubusercontent.com/43945931/209933073-6721fe98-3093-4acb-ac63-42daae99a5ec.png)
 
 `Alt+M`で呼び出す。Macだと`⌥+M`。
 
@@ -26,7 +21,6 @@ e.g.)
     ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/316390/2a643039-6ce8-c02e-5fd6-ca39ecb461e3.png)
 
 ### 改行などの削除
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/316390/f871ddaf-7e28-17ac-590a-fb726e0f3ee7.png)
 
 * `NL`
     改行→半角スペースにする。Alt（⌥）キーを連打するとこれが実行され、さらにクリップボードにコピーされる。
@@ -95,6 +89,7 @@ e.g.)
     * テキストボックスにペーストすると自動で全角に囲まれた半角スペースが削除されるが、何回かフォーカスしないと途中までしかやってくれないかもしれないので注意。
     * 履歴が3つまで残る。（History1~3）
     * 下段のテキストボックスはなにもしないので元のテキストの保存用に。Memoは履歴には残らないただのテキストボックス。
+
 
 ### 文字列置換
 置換前wordに置換したいと思っている文字列を入力し、置換後wordに変換する文字列を入力。Beforeの欄に、テキストを入れると、Afterに置換後のテキストがリアルタイムで出力される。`Clear`でテキストボックスがクリアされ、`Copy`を押すとクリップボードにコピーされる。
