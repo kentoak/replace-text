@@ -106,6 +106,15 @@ function spongeText(string) { //sPoNgEcAsE
 	return chars.join("");
 }
 
+function capitalize(string) { //capitalize
+	//return string.charAt(0).toUpperCase() + string.slice(1);
+    const words = string.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+    return words.join(" ");
+}
+
 function escape_func(a){
 	a = a.replace("|","\\|","g");
 }
@@ -185,6 +194,15 @@ function upper_lower_func(){
 	$("#preview").text(output_txt);
 };
 
+function capitalize_func(){
+	var input_txt = $("#input").val();
+	var output_txt = input_txt;
+    if($("#check10").prop('checked')){
+        output_txt = capitalize(input_txt)
+    }
+	$("#preview").text(output_txt);
+};
+
 $(function () {
     var rpl1=$("#check").prop('checked')
     var rpl2=$("#check2").prop('checked')
@@ -193,6 +211,7 @@ $(function () {
     var hf1=$("#check6").prop('checked')
     var hf2=$("#check7").prop('checked')
     var sponge=$("#check5").prop('checked')
+    cap=$("#check10").prop('checked')
     var before_txt = $("#before-txt").val();
 	var after_txt = $("#after-txt").val();
 	var before_txt2 = $("#before-txt2").val();
@@ -229,6 +248,9 @@ $(function () {
     $("input[name='ul-check']").change(function() {
         upper_lower_func();
     });
+    $("input[name='cap-check']").change(function() {
+        capitalize_func();
+    });
     $("input[name='sponge-check']").change(function() {
         sponge_func();
     });
@@ -242,6 +264,7 @@ $(function () {
         ul2=$("#check4").prop('checked')
         hf1=$("#check6").prop('checked')
         hf2=$("#check7").prop('checked')
+        cap=$("#check10").prop('checked')
         sponge=$("#check5").prop('checked')
         insert1=$("#check8").prop('checked')
         insert2=$("#check9").prop('checked')
@@ -258,17 +281,22 @@ $(function () {
             if (ul1 || ul2){
                 upper_lower_func();
             }else{
-                if (hf1 || hf2){
-                    half_full_func();
-                }else{
-                    if (sponge){
-                        sponge_func();
-                    }
-                    else{
-                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
-                            insert_func()
-                        }else{
-                            $("#preview").text($("#input").val());
+                if (cap){
+                    capitalize_func();
+                }
+                else{
+                    if (hf1 || hf2){
+                        half_full_func();
+                    }else{
+                        if (sponge){
+                            sponge_func();
+                        }
+                        else{
+                            if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                                insert_func()
+                            }else{
+                                $("#preview").text($("#input").val());
+                            }
                         }
                     }
                 }
@@ -284,6 +312,7 @@ $(function () {
         hf1=$("#check6").prop('checked')
         hf2=$("#check7").prop('checked')
         sponge=$("#check5").prop('checked')
+        cap=$("#check10").prop('checked')
         insert1=$("#check8").prop('checked')
         insert2=$("#check9").prop('checked')
         insert_before_txt=$("#insert_before-txt").val();
@@ -299,17 +328,21 @@ $(function () {
             if (ul1 || ul2){
                 upper_lower_func();
             }else{
-                if (hf1 || hf2){
-                    half_full_func();
+                if (cap){
+                    capitalize_func();
                 }else{
-                    if (sponge){
-                        sponge_func();
-                    }
-                    else{
-                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
-                            insert_func()
-                        }else{
-                            $("#preview").text($("#input").val());
+                    if (hf1 || hf2){
+                        half_full_func();
+                    }else{
+                        if (sponge){
+                            sponge_func();
+                        }
+                        else{
+                            if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                                insert_func()
+                            }else{
+                                $("#preview").text($("#input").val());
+                            }
                         }
                     }
                 }
