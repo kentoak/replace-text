@@ -198,7 +198,8 @@ function capitalize_func(){
 	var input_txt = $("#input").val();
 	var output_txt = input_txt;
     if($("#check10").prop('checked')){
-        output_txt = capitalize(input_txt)
+        output_txt = lower(input_txt)
+        output_txt = capitalize(output_txt)
     }
 	$("#preview").text(output_txt);
 };
