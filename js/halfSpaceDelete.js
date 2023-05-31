@@ -221,90 +221,90 @@ $(function(){//カウント数
 
 var storage = chrome.storage.local;
 
-function saveMemo(){
-	storage.set({'data_changeText':$('#changeText').val()}, function(){//上側
-		// storage.get("data_changeText",function(value){
-		// 	var value_data = value.data_changeText;
-		// 	//alert(value_data)
-		// 	document.querySelector('#savedText1').textContent = value_data
-		// });
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_savedText1':$('#savedText1').val()}, function(){
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_savedText2':$('#savedText2').val()}, function(){
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_text':$('#Text').val()}, function(){//下側
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	return;
-}
+// function saveMemo(){
+// 	storage.set({'data_changeText':$('#changeText').val()}, function(){//上側
+// 		// storage.get("data_changeText",function(value){
+// 		// 	var value_data = value.data_changeText;
+// 		// 	//alert(value_data)
+// 		// 	document.querySelector('#savedText1').textContent = value_data
+// 		// });
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_savedText1':$('#savedText1').val()}, function(){
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_savedText2':$('#savedText2').val()}, function(){
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_text':$('#Text').val()}, function(){//下側
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	return;
+// }
 
-function setRealtimeSaveFlg(flg){
-	storage.set({'config__realtimesaveflg':flg}, function(){
-	});
-	return true;
-}
-setRealtimeSaveFlg("1");
+// function setRealtimeSaveFlg(flg){
+// 	storage.set({'config__realtimesaveflg':flg}, function(){
+// 	});
+// 	return true;
+// }
+// setRealtimeSaveFlg("1");
 
-function realtimesave(){
-	storage.get('config__realtimesaveflg',function(items) {
-	  	if(items.config__realtimesaveflg){
-			if(items.config__realtimesaveflg=="1"){
-				saveMemo();
-			}
-	  	}
-	});
-	return true;
-}
-document.querySelector('#changeText').addEventListener('keydown', realtimesave);
-document.querySelector('#Text').addEventListener('keydown', realtimesave);
+// function realtimesave(){
+// 	storage.get('config__realtimesaveflg',function(items) {
+// 	  	if(items.config__realtimesaveflg){
+// 			if(items.config__realtimesaveflg=="1"){
+// 				saveMemo();
+// 			}
+// 	  	}
+// 	});
+// 	return true;
+// }
+// document.querySelector('#changeText').addEventListener('keydown', realtimesave);
+// document.querySelector('#Text').addEventListener('keydown', realtimesave);
 
-window.onload = function() {
-	storage.get('data_changeText',function(items) {
-	  if(items.data_changeText){
-		//$('#changeText').val(items.data_changeText);
-		$('#savedText1').val(items.data_changeText);
-	  }
-	});
-	storage.get('data_savedText1',function(items) {
-		if(items.data_savedText1){
-		  $('#savedText2').val(items.data_savedText1);
-		}
-	});
-	storage.get('data_savedText2',function(items) {
-		if(items.data_savedText2){
-		  $('#savedText3').val(items.data_savedText2);
-		}
-	});
-	storage.get('data_text',function(items) {
-		if(items.data_text){
-			$('#Text').val(items.data_text);
-		}
-	});
-};
+// window.onload = function() {
+// 	storage.get('data_changeText',function(items) {
+// 	  if(items.data_changeText){
+// 		//$('#changeText').val(items.data_changeText);
+// 		$('#savedText1').val(items.data_changeText);
+// 	  }
+// 	});
+// 	storage.get('data_savedText1',function(items) {
+// 		if(items.data_savedText1){
+// 		  $('#savedText2').val(items.data_savedText1);
+// 		}
+// 	});
+// 	storage.get('data_savedText2',function(items) {
+// 		if(items.data_savedText2){
+// 		  $('#savedText3').val(items.data_savedText2);
+// 		}
+// 	});
+// 	storage.get('data_text',function(items) {
+// 		if(items.data_text){
+// 			$('#Text').val(items.data_text);
+// 		}
+// 	});
+// };
 
 function countLength1(){
 	document.getElementById("count1").innerText = document.querySelector('#changeText').value.length+"文字";
