@@ -42,10 +42,11 @@ $(function(){
 	});
     document.onkeydown = function(e) {
         var keyCode = false;
-        if (e.keyCode == 18) {//ALTを押した時
-			var btn1= $('#btn5');
-			btn1.click();
-			//window.alert("テキストの内容をコピーしました")
+        //if (e.keyCode == 18) {//ALTを押した時
+	if (e.keyCode == 17) {//ALTを押した時//Windowsだけ？ChromeでもEdgeでもAltを押すとアクセラレーター（３点、設定など）にフォーカスされてしまう。
+		var btn1= $('#btn5');
+		btn1.click();
+		//window.alert("テキストの内容をコピーしました")
         } else if (event.which) {
             keyCode = event.which;
         }
