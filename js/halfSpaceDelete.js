@@ -43,7 +43,7 @@ $(function(){
     document.onkeydown = function(e) {
         var keyCode = false;
         //if (e.keyCode == 18) {//ALTを押した時
-	if (e.keyCode == 17) {//ALTを押した時//Windowsだけ？ChromeでもEdgeでもAltを押すとアクセラレーター（３点、設定など）にフォーカスされてしまう。
+	if (e.keyCode == 16) {//ALTを押した時//Windowsだけ？ChromeでもEdgeでもAltを押すとアクセラレーター（３点、設定など）にフォーカスされてしまう。Ctrl=17は、Winだとペーストとコンフリクトしてしまう
 		var btn1= $('#btn5');
 		btn1.click();
 		//window.alert("テキストの内容をコピーしました")
