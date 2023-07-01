@@ -21,7 +21,7 @@
     <input type="button" value="BL" id="btn4">
     <input type="button" value="Copy" id="btn2">
     <input type="button" value="cnt" id="btn3">
-    <input type="button" value="Cmd" id="btn6">
+    <!-- <input type="button" value="Cmd" id="btn6"> -->
     <input type="button" value="~Spc~" id="btn7">
     <input type="button" value="ALL" id="btn8">
     <section>
@@ -34,7 +34,8 @@
             <font size="1.4">文字数</font>
         </div>
         <div id="explanation">
-            <font size="0.2">NL：改行→半角Spc, BL：空行削除, NL&Spc：改行&半角Spc削除<br>ALL：全改行削除, Cmd：行頭の'＄'・'%'・'>'を除く</font>
+            <!-- <font size="0.2">NL：改行→半角Spc, BL：空行削除, NL&Spc：改行&半角Spc削除<br>ALL：全半角Spc&改行削除, Cmd：行頭の'＄'・'%'・'>'を除く</font> -->
+            <font size="0.2">NL：改行を半角Spcに, BL：空行削除, NL&Spc：改行&半角Spc削除<br>~Spc~：先頭と末尾の半角Spcを削除, ALL：全半角Spc&改行削除</font>
         </div>
         <div id="rireki" style="font-size:7pt">History1</div>
         <div id="textArea1">
@@ -55,18 +56,7 @@
             </form>
         </div>
         <hr class="replaceWord">
-            <div id="property" bis_skin_checked="1">
-                <label><input id="check" type="checkbox" checked></label>
-                <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
-                →
-                <input id="after-txt" placeholder="置換後word①" type="text" value="">
-                <br>
-                <label><input id="check2" type="checkbox" checked></label>
-                <input id="before-txt2" placeholder="置換前word②" type="text" value="" style="margin-right: 0;"/>
-                →
-                <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
-            </div>
-            <p class="dotted-bottom"></p>
+            <!-- <p class="dotted-bottom"></p> -->
             <div id="property">
                 <label><input id="check4" type="checkbox" name="ul-check" class="ul-check"></label>
                 <select id="al-type">
@@ -110,6 +100,19 @@
                 <input id="insert_before-txt" placeholder="行頭に挿入する文字" type="text" value="" style="margin-right: 0;">
                 <label><input id="check9" type="checkbox" name="insert-check" class="insert-check"></label>
                 <input id="insert_after-txt" placeholder="行末に挿入する文字" type="text" value="">
+            </div>
+            <div id="property" bis_skin_checked="1">
+                <!-- <label><input id="check" type="checkbox" checked></label> -->
+                <label><input id="check" type="checkbox" name="replace-check"></label>
+                <input id="before-txt" placeholder="置換前word①" type="text" value="" style="margin-right: 0;">
+                →
+                <input id="after-txt" placeholder="置換後word①" type="text" value="">
+                <br>
+                <!-- <label><input id="check2" type="checkbox" checked></label> -->
+                <label><input id="check2" type="checkbox" name="replace-check2"></label>
+                <input id="before-txt2" placeholder="置換前word②" type="text" value="" style="margin-right: 0;"/>
+                →
+                <input id="after-txt2" placeholder="置換後word②" type="text" value="" >
             </div>
             <!-- <br> -->
             <div style="display: flex; flex-wrap: nowrap;"> 
