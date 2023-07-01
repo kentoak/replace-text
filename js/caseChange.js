@@ -312,50 +312,45 @@ function nagare1(nowfunction){
         if($("#check2").prop('checked') && before_txt2 !== ""){
             output_txt = output_txt.split(before_txt2).join(after_txt2);
         }
-    }else{
-        if (ul1 || ul2){
-            if($("#check4").prop('checked')){
-                output_txt = lower(tmp_output)
-            }
-            if ($("#check3").prop('checked')){
-                output_txt = upper(tmp_output)
-            }
-        }else{
-            if (cap){
-                output_txt = lower(input_txt)
-                output_txt = capitalize(output_txt)
-            }else{
-                if (hf1 || hf2){
-                    var type = {
-                        number: $("#select-multiple option[name='number']").prop('selected'),
-                        latin: $("#select-multiple option[name='latin']").prop('selected'),
-                        kana: $("#select-multiple option[name='kana']").prop('selected'),
-                        symbol1: $("#select-multiple option[name='symbol1']").prop('selected'),
-                        symbol2: $("#select-multiple option[name='symbol1']").prop('selected'),
-                        space: $("#select-multiple option[name='space']").prop('selected')
-                    };
-                    if($("#check6").prop('checked')){
-                        output_txt = Convert(output_txt, false, type);
-                    }
-                    if($("#check7").prop('checked')){
-                        output_txt = Convert(output_txt, true, type);
-                    }
-                }else{
-                    if (sponge){
-                        output_txt = spongeText(output_txt)
-                    }
-                    else{
-                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
-                            if($("#check8").prop('checked')){
-                                output_txt = output_txt.replace(/^(.)/gm,before_txt+"$1");
-                            }
-                            if($("#check8").prop('checked')){
-                                output_txt = output_txt.replace(/(.)$/gm,"$1"+after_txt);
-                            }
-                        }
-                    }
-                }
-            }
+    }
+    if (ul1 || ul2){
+        if($("#check4").prop('checked')){
+            output_txt = lower(output_txt)
+        }
+        if ($("#check3").prop('checked')){
+            output_txt = upper(output_txt)
+        }
+    }
+    if (cap){
+        output_txt = lower(input_txt)
+        output_txt = capitalize(output_txt)
+    }
+    if (hf1 || hf2){
+        var type = {
+            number: $("#select-multiple option[name='number']").prop('selected'),
+            latin: $("#select-multiple option[name='latin']").prop('selected'),
+            kana: $("#select-multiple option[name='kana']").prop('selected'),
+            symbol1: $("#select-multiple option[name='symbol1']").prop('selected'),
+            symbol2: $("#select-multiple option[name='symbol1']").prop('selected'),
+            space: $("#select-multiple option[name='space']").prop('selected')
+        };
+        if($("#check6").prop('checked')){
+            output_txt = Convert(output_txt, false, type);
+        }
+        if($("#check7").prop('checked')){
+            output_txt = Convert(output_txt, true, type);
+        }
+    }
+    if (sponge){
+        output_txt = spongeText(output_txt)
+    }
+
+    if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+        if($("#check8").prop('checked')){
+            output_txt = output_txt.replace(/^(.)/gm,before_txt+"$1");
+        }
+        if($("#check8").prop('checked')){
+            output_txt = output_txt.replace(/(.)$/gm,"$1"+after_txt);
         }
     }
     return output_txt
@@ -363,26 +358,6 @@ function nagare1(nowfunction){
 
 
 $(function () {
-    var rpl1=$("#check").prop('checked')
-    var rpl2=$("#check2").prop('checked')
-    var ul1=$("#check3").prop('checked')
-    var ul2=$("#check4").prop('checked')
-    var hf1=$("#check6").prop('checked')
-    var hf2=$("#check7").prop('checked')
-    var sponge=$("#check5").prop('checked')
-    var cap=$("#check10").prop('checked')
-    var before_txt = $("#before-txt").val();
-	var after_txt = $("#after-txt").val();
-	var before_txt2 = $("#before-txt2").val();
-	var after_txt2 = $("#after-txt2").val();
-    var insert1=$("#check8").prop('checked')
-    var insert2=$("#check9").prop('checked')
-    var insert_before_txt = $("#insert_before-txt").val();
-	var insert_after_txt = $("#insert_after-txt").val();
-
-    // selectOne_hfCheck()
-    // selectOne_ulCheck()
-    // selectOne_spongeCheck() 
     $("#after-txt").keyup(function() {
         replace_func();
     });
