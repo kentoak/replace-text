@@ -114,9 +114,9 @@ function capitalize(string) { //capitalize
     return words.join(" ");
 }
 
-function escape_func(a){
-	a = a.replace("|","\\|","g");
-}
+// function escape_func(a){
+// 	a = a.replace("|","\\|","g");
+// }
 
 function replace_func(){
 	var input_txt = $("#input").val();
