@@ -1,4 +1,3 @@
-
 function selectOne_hfCheck(){
     $('.hf-check').on('click', function() {
         if ($(this).prop('checked')){

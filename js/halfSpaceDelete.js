@@ -42,26 +42,13 @@ $(function(){
 	});
     document.onkeydown = function(e) {
         var keyCode = false;
-		var isWindows = navigator.userAgent.indexOf('Win') > -1;
-		var isMac = navigator.userAgent.indexOf('Mac') > -1;
-		if (isWindows){
-			if (e.keyCode == 16) {//ALTを押した時//Windowsだけ？ChromeでもEdgeでもAltを押すとアクセラレーター（３点、設定など）にフォーカスされてしまう。Ctrl=17は、Winだとペーストとコンフリクトしてしまう
-				var btn1= $('#btn5');
-				btn1.click();
-				//window.alert("テキストの内容をコピーしました")
-			} else if (event.which) {
-				keyCode = event.which;
-			}
-		}
-		else{
-			if (e.keyCode == 18) {//ALTを押した時
-				var btn1= $('#btn5');
-				btn1.click();
-				//window.alert("テキストの内容をコピーしました")
-			} else if (event.which) {
-				keyCode = event.which;
-			}
-		}
+        if (e.keyCode == 18) {//ALTを押した時
+			var btn1= $('#btn5');
+			btn1.click();
+			//window.alert("テキストの内容をコピーしました")
+        } else if (event.which) {
+            keyCode = event.which;
+        }
         //alert(keyCode);
     }
 });
@@ -234,90 +221,90 @@ $(function(){//カウント数
 
 var storage = chrome.storage.local;
 
-function saveMemo(){
-	storage.set({'data_changeText':$('#changeText').val()}, function(){//上側
-		// storage.get("data_changeText",function(value){
-		// 	var value_data = value.data_changeText;
-		// 	//alert(value_data)
-		// 	document.querySelector('#savedText1').textContent = value_data
-		// });
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_savedText1':$('#savedText1').val()}, function(){
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_savedText2':$('#savedText2').val()}, function(){
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	storage.set({'data_text':$('#Text').val()}, function(){//下側
-		storage.get('config__send_flg',function(items) {
-			if(items.config__send_flg=="1"){
-			}else{
-				//alert(chrome.i18n.getMessage("extSaveSuccess"));
-			}
-		});
-	});
-	return;
-}
+// function saveMemo(){
+// 	storage.set({'data_changeText':$('#changeText').val()}, function(){//上側
+// 		// storage.get("data_changeText",function(value){
+// 		// 	var value_data = value.data_changeText;
+// 		// 	//alert(value_data)
+// 		// 	document.querySelector('#savedText1').textContent = value_data
+// 		// });
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_savedText1':$('#savedText1').val()}, function(){
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_savedText2':$('#savedText2').val()}, function(){
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	storage.set({'data_text':$('#Text').val()}, function(){//下側
+// 		storage.get('config__send_flg',function(items) {
+// 			if(items.config__send_flg=="1"){
+// 			}else{
+// 				//alert(chrome.i18n.getMessage("extSaveSuccess"));
+// 			}
+// 		});
+// 	});
+// 	return;
+// }
 
-function setRealtimeSaveFlg(flg){
-	storage.set({'config__realtimesaveflg':flg}, function(){
-	});
-	return true;
-}
-setRealtimeSaveFlg("1");
+// function setRealtimeSaveFlg(flg){
+// 	storage.set({'config__realtimesaveflg':flg}, function(){
+// 	});
+// 	return true;
+// }
+// setRealtimeSaveFlg("1");
 
-function realtimesave(){
-	storage.get('config__realtimesaveflg',function(items) {
-	  	if(items.config__realtimesaveflg){
-			if(items.config__realtimesaveflg=="1"){
-				saveMemo();
-			}
-	  	}
-	});
-	return true;
-}
-document.querySelector('#changeText').addEventListener('keydown', realtimesave);
-document.querySelector('#Text').addEventListener('keydown', realtimesave);
+// function realtimesave(){
+// 	storage.get('config__realtimesaveflg',function(items) {
+// 	  	if(items.config__realtimesaveflg){
+// 			if(items.config__realtimesaveflg=="1"){
+// 				saveMemo();
+// 			}
+// 	  	}
+// 	});
+// 	return true;
+// }
+// document.querySelector('#changeText').addEventListener('keydown', realtimesave);
+// document.querySelector('#Text').addEventListener('keydown', realtimesave);
 
-window.onload = function() {
-	storage.get('data_changeText',function(items) {
-	  if(items.data_changeText){
-		//$('#changeText').val(items.data_changeText);
-		$('#savedText1').val(items.data_changeText);
-	  }
-	});
-	storage.get('data_savedText1',function(items) {
-		if(items.data_savedText1){
-		  $('#savedText2').val(items.data_savedText1);
-		}
-	});
-	storage.get('data_savedText2',function(items) {
-		if(items.data_savedText2){
-		  $('#savedText3').val(items.data_savedText2);
-		}
-	});
-	storage.get('data_text',function(items) {
-		if(items.data_text){
-			$('#Text').val(items.data_text);
-		}
-	});
-};
+// window.onload = function() {
+// 	storage.get('data_changeText',function(items) {
+// 	  if(items.data_changeText){
+// 		//$('#changeText').val(items.data_changeText);
+// 		$('#savedText1').val(items.data_changeText);
+// 	  }
+// 	});
+// 	storage.get('data_savedText1',function(items) {
+// 		if(items.data_savedText1){
+// 		  $('#savedText2').val(items.data_savedText1);
+// 		}
+// 	});
+// 	storage.get('data_savedText2',function(items) {
+// 		if(items.data_savedText2){
+// 		  $('#savedText3').val(items.data_savedText2);
+// 		}
+// 	});
+// 	storage.get('data_text',function(items) {
+// 		if(items.data_text){
+// 			$('#Text').val(items.data_text);
+// 		}
+// 	});
+// };
 
 function countLength1(){
 	document.getElementById("count1").innerText = document.querySelector('#changeText').value.length+"文字";
