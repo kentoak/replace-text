@@ -124,25 +124,30 @@ function replace_func(){
 	var after_txt = $("#after-txt").val();
 	var before_txt2 = $("#before-txt2").val();
 	var after_txt2 = $("#after-txt2").val();
-	var output_txt = input_txt;
-
-	before_txt = before_txt.replace("|","\\|","g");
-	if($("#check").prop('checked') && before_txt !== "" && after_txt !== ""){
+	//var output_txt = input_txt;
+    output_txt=nagare1("rpl")
+	//before_txt = before_txt.replace("|","\\|","g");//第三引数として "g" を指定しています。これはグローバルフラグを表し、すべての一致箇所を置換するために使用されます。つまり、文字列内のすべての "|" を "\|" に置換するという意味です。
+	// if($("#check").prop('checked') && before_txt !== "" && after_txt !== ""){
+	// 	output_txt = output_txt.split(before_txt).join(after_txt);
+	// }
+    // if($("#check2").prop('checked') && before_txt2 !== "" && after_txt2 !== ""){
+	// 	output_txt = output_txt.split(before_txt2).join(after_txt2);
+	// }
+    if($("#check").prop('checked') && before_txt !== ""){//削除にも対応
 		output_txt = output_txt.split(before_txt).join(after_txt);
 	}
-
-	if($("#check2").prop('checked') && before_txt2 !== "" && after_txt2 !== ""){
+	if($("#check2").prop('checked') && before_txt2 !== ""){
 		output_txt = output_txt.split(before_txt2).join(after_txt2);
 	}
 	$("#preview").text(output_txt);
-
 };
 
 function insert_func(){//行の前後に文字を挿入する
 	var input_txt = $("#input").val();
 	var before_txt = $("#insert_before-txt").val();
 	var after_txt = $("#insert_after-txt").val();
-	var output_txt = input_txt;
+	//var output_txt = input_txt;
+    output_txt=nagare1("insert")
     if($("#check8").prop('checked')){
         output_txt = output_txt.replace(/^(.)/gm,before_txt+"$1");
     }
@@ -153,8 +158,9 @@ function insert_func(){//行の前後に文字を挿入する
 };
   
 function half_full_func(){
-	var input_txt = $("#input").val();
-	var output_txt = input_txt;
+	// var input_txt = $("#input").val();
+	// var output_txt = input_txt;
+    output_txt=nagare1("hf")
 	var type = {
 		number: $("#select-multiple option[name='number']").prop('selected'),
 		latin: $("#select-multiple option[name='latin']").prop('selected'),
@@ -164,44 +170,197 @@ function half_full_func(){
 		space: $("#select-multiple option[name='space']").prop('selected')
 	};
 	if($("#check6").prop('checked')){
-		output_txt = Convert(output_txt, false, type);
+		//output_txt = Convert(output_txt, false, type);
+        output_txt = Convert(output_txt, false, type);
 	}
 	if($("#check7").prop('checked')){
-		output_txt = Convert(output_txt, true, type);
+		//output_txt = Convert(output_txt, true, type);
+        output_txt = Convert(output_txt, true, type);
 	}
 	$("#preview").text(output_txt);
 };
 
-function sponge_func(){
-    var input_txt = $("#input").val();
-    var output_txt = input_txt;
-    if($("#check5").prop('checked')){
-        output_txt = spongeText(output_txt)
-    }
-    $("#preview").text(output_txt);
-};
-
 function upper_lower_func(){
-	var input_txt = $("#input").val();
-	var output_txt = input_txt;
+	// var input_txt = $("#input").val();
+	// var output_txt = input_txt;
+    output_txt=nagare1("ul")
     if($("#check4").prop('checked')){
-        output_txt = lower(input_txt)
+        //output_txt = lower(input_txt)
+        output_txt = lower(output_txt)
     }
     if ($("#check3").prop('checked')){
-		output_txt = upper(input_txt)
+		//output_txt = upper(input_txt)
+        output_txt = upper(output_txt)
 	}
 	$("#preview").text(output_txt);
 };
 
 function capitalize_func(){
 	var input_txt = $("#input").val();
-	var output_txt = input_txt;
+	//var output_txt = input_txt;
+    output_txt=nagare1("cap")
     if($("#check10").prop('checked')){
         output_txt = lower(input_txt)
         output_txt = capitalize(output_txt)
     }
 	$("#preview").text(output_txt);
 };
+
+function sponge_func(){
+    var input_txt = $("#input").val();
+    //var output_txt = input_txt;
+    output_txt=nagare1("sponge")
+    if($("#check5").prop('checked')){
+        output_txt = spongeText(output_txt)
+    }
+    $("#preview").text(output_txt);
+};
+
+function nagare(){
+    rpl1=$("#check").prop('checked')
+    rpl2=$("#check2").prop('checked')
+    ul1=$("#check3").prop('checked')
+    ul2=$("#check4").prop('checked')
+    hf1=$("#check6").prop('checked')
+    hf2=$("#check7").prop('checked')
+    sponge=$("#check5").prop('checked')
+    cap=$("#check10").prop('checked')
+    insert1=$("#check8").prop('checked')
+    insert2=$("#check9").prop('checked')
+    insert_before_txt=$("#insert_before-txt").val();
+    insert_after_txt=$("#insert_after-txt").val();
+    before_txt = $("#before-txt").val();
+    after_txt = $("#after-txt").val();
+    before_txt2 = $("#before-txt2").val();
+    after_txt2 = $("#after-txt2").val();
+    //if ((rpl1&&before_txt!==""&&after_txt!=="")||(rpl2&&before_txt2!==""&&after_txt2!=="")){
+    if ((rpl1&&before_txt!=="")||(rpl2&&before_txt2!=="")){
+        replace_func();
+    }else{
+        if (ul1 || ul2){
+            upper_lower_func();
+        }else{
+            if (cap){
+                capitalize_func();
+            }else{
+                if (hf1 || hf2){
+                    half_full_func();
+                }else{
+                    if (sponge){
+                        sponge_func();
+                    }
+                    else{
+                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                            insert_func()
+                        }else{
+                            $("#preview").text($("#input").val());
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function nagare1(nowfunction){
+    rpl1=$("#check").prop('checked')
+    rpl2=$("#check2").prop('checked')
+    ul1=$("#check3").prop('checked')
+    ul2=$("#check4").prop('checked')
+    hf1=$("#check6").prop('checked')
+    hf2=$("#check7").prop('checked')
+    sponge=$("#check5").prop('checked')
+    cap=$("#check10").prop('checked')
+    insert1=$("#check8").prop('checked')
+    insert2=$("#check9").prop('checked')
+
+    insert_before_txt=$("#insert_before-txt").val();
+    insert_after_txt=$("#insert_after-txt").val();
+    before_txt = $("#before-txt").val();
+    after_txt = $("#after-txt").val();
+    before_txt2 = $("#before-txt2").val();
+    after_txt2 = $("#after-txt2").val();
+    switch (nowfunction) {
+        case "rpl":
+            rpl1=false
+            rpl2=false
+            break;
+        case "ul":
+            ul1=false
+            ul2=false
+            break;
+        case "hf":
+            hf1=false
+            hf2=false
+            break;
+        case "sponge":
+            sponge=false
+            break;
+        case "cap":
+            cap=false
+            break;
+        case "insert":
+            insert1=false
+            insert2=false
+            break;
+    }
+    var output_txt = $("#input").val();
+    if ((rpl1&&before_txt!=="")||(rpl2&&before_txt2!=="")){
+        if($("#check").prop('checked') && before_txt !== ""){//削除にも対応
+            output_txt = output_txt.split(before_txt).join(after_txt);
+        }
+        if($("#check2").prop('checked') && before_txt2 !== ""){
+            output_txt = output_txt.split(before_txt2).join(after_txt2);
+        }
+    }else{
+        if (ul1 || ul2){
+            if($("#check4").prop('checked')){
+                output_txt = lower(tmp_output)
+            }
+            if ($("#check3").prop('checked')){
+                output_txt = upper(tmp_output)
+            }
+        }else{
+            if (cap){
+                output_txt = lower(input_txt)
+                output_txt = capitalize(output_txt)
+            }else{
+                if (hf1 || hf2){
+                    var type = {
+                        number: $("#select-multiple option[name='number']").prop('selected'),
+                        latin: $("#select-multiple option[name='latin']").prop('selected'),
+                        kana: $("#select-multiple option[name='kana']").prop('selected'),
+                        symbol1: $("#select-multiple option[name='symbol1']").prop('selected'),
+                        symbol2: $("#select-multiple option[name='symbol1']").prop('selected'),
+                        space: $("#select-multiple option[name='space']").prop('selected')
+                    };
+                    if($("#check6").prop('checked')){
+                        output_txt = Convert(output_txt, false, type);
+                    }
+                    if($("#check7").prop('checked')){
+                        output_txt = Convert(output_txt, true, type);
+                    }
+                }else{
+                    if (sponge){
+                        output_txt = spongeText(output_txt)
+                    }
+                    else{
+                        if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
+                            if($("#check8").prop('checked')){
+                                output_txt = output_txt.replace(/^(.)/gm,before_txt+"$1");
+                            }
+                            if($("#check8").prop('checked')){
+                                output_txt = output_txt.replace(/(.)$/gm,"$1"+after_txt);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return output_txt
+}
+
 
 $(function () {
     var rpl1=$("#check").prop('checked')
@@ -211,7 +370,7 @@ $(function () {
     var hf1=$("#check6").prop('checked')
     var hf2=$("#check7").prop('checked')
     var sponge=$("#check5").prop('checked')
-    cap=$("#check10").prop('checked')
+    var cap=$("#check10").prop('checked')
     var before_txt = $("#before-txt").val();
 	var after_txt = $("#after-txt").val();
 	var before_txt2 = $("#before-txt2").val();
@@ -221,16 +380,20 @@ $(function () {
     var insert_before_txt = $("#insert_before-txt").val();
 	var insert_after_txt = $("#insert_after-txt").val();
 
-    selectOne_hfCheck()
-    selectOne_ulCheck()
-    selectOne_spongeCheck() 
+    // selectOne_hfCheck()
+    // selectOne_ulCheck()
+    // selectOne_spongeCheck() 
+    $("#after-txt").keyup(function() {
+        replace_func();
+    });
+    $("#after-txt2").keyup(function() {
+        replace_func();
+    });
+
     $("#before-txt").change(function() {
         replace_func();
     });
     $("#after-txt").change(function() {
-        replace_func();
-    });
-    $("#after-txt").keyup(function() {
         replace_func();
     });
     $("#before-txt2").change(function() {
@@ -239,7 +402,10 @@ $(function () {
     $("#after-txt2").change(function() {
         replace_func();
     });
-    $("#after-txt2").keyup(function() {
+    $("input[name='replace-check']").change(function() {
+        replace_func();
+    });
+    $("input[name='replace-check2']").change(function() {
         replace_func();
     });
 	$("input[name='hf-check']").change(function() {
@@ -258,96 +424,10 @@ $(function () {
         insert_func();
     });
 	$("#input").change(function() {
-		rpl1=$("#check").prop('checked')
-        rpl2=$("#check2").prop('checked')
-        ul1=$("#check3").prop('checked')
-        ul2=$("#check4").prop('checked')
-        hf1=$("#check6").prop('checked')
-        hf2=$("#check7").prop('checked')
-        cap=$("#check10").prop('checked')
-        sponge=$("#check5").prop('checked')
-        insert1=$("#check8").prop('checked')
-        insert2=$("#check9").prop('checked')
-        insert_before_txt=$("#insert_before-txt").val();
-	    insert_after_txt=$("#insert_after-txt").val();
-		before_txt = $("#before-txt").val();
-		after_txt = $("#after-txt").val();
-		before_txt2 = $("#before-txt2").val();
-		after_txt2 = $("#after-txt2").val();
-        
-        if ((rpl1&&before_txt!==""&&after_txt!=="")||(rpl2&&before_txt2!==""&&after_txt2!=="")){
-            replace_func();
-        }else{
-            if (ul1 || ul2){
-                upper_lower_func();
-            }else{
-                if (cap){
-                    capitalize_func();
-                }
-                else{
-                    if (hf1 || hf2){
-                        half_full_func();
-                    }else{
-                        if (sponge){
-                            sponge_func();
-                        }
-                        else{
-                            if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
-                                insert_func()
-                            }else{
-                                $("#preview").text($("#input").val());
-                            }
-                        }
-                    }
-                }
-            }
-        }
+		nagare()
     });
-
     $("#input").keyup(function() {
-        rpl1=$("#check").prop('checked')
-        rpl2=$("#check2").prop('checked')
-        ul1=$("#check3").prop('checked')
-        ul2=$("#check4").prop('checked')
-        hf1=$("#check6").prop('checked')
-        hf2=$("#check7").prop('checked')
-        sponge=$("#check5").prop('checked')
-        cap=$("#check10").prop('checked')
-        insert1=$("#check8").prop('checked')
-        insert2=$("#check9").prop('checked')
-        insert_before_txt=$("#insert_before-txt").val();
-	    insert_after_txt=$("#insert_after-txt").val();
-		before_txt = $("#before-txt").val();
-		after_txt = $("#after-txt").val();
-		before_txt2 = $("#before-txt2").val();
-		after_txt2 = $("#after-txt2").val();
-        
-        if ((rpl1&&before_txt!==""&&after_txt!=="")||(rpl2&&before_txt2!==""&&after_txt2!=="")){
-            replace_func();
-        }else{
-            if (ul1 || ul2){
-                upper_lower_func();
-            }else{
-                if (cap){
-                    capitalize_func();
-                }else{
-                    if (hf1 || hf2){
-                        half_full_func();
-                    }else{
-                        if (sponge){
-                            sponge_func();
-                        }
-                        else{
-                            if((insert1&&insert_before_txt!=="")||(insert2&&insert_after_txt!=="")){
-                                insert_func()
-                            }else{
-                                $("#preview").text($("#input").val());
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        nagare()
     });
 });
 

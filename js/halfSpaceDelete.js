@@ -42,11 +42,10 @@ $(function(){
 	});
     document.onkeydown = function(e) {
         var keyCode = false;
-        //if (e.keyCode == 18) {//ALTを押した時
-	if (e.keyCode == 16) {//ALTを押した時//Windowsだけ？ChromeでもEdgeでもAltを押すとアクセラレーター（３点、設定など）にフォーカスされてしまう。Ctrl=17は、Winだとペーストとコンフリクトしてしまう
-		var btn1= $('#btn5');
-		btn1.click();
-		//window.alert("テキストの内容をコピーしました")
+        if (e.keyCode == 18) {//ALTを押した時
+			var btn1= $('#btn5');
+			btn1.click();
+			//window.alert("テキストの内容をコピーしました")
         } else if (event.which) {
             keyCode = event.which;
         }
@@ -173,7 +172,7 @@ $(function(){//行頭と行末の空白スペースを削除 "~Spc~"
 	});
 });
 
-$(function(){//すべての改行削除 "ALL"
+$(function(){//すべての半角スペースと改行削除 "ALL"
 	var btn5= $('#btn8');
 	btn5.on('click',function(){
 		for(var i=0;i<10;i++){
@@ -186,23 +185,23 @@ $(function(){//すべての改行削除 "ALL"
 	});
 });
 
-$(function(){//コマンドラインの余計なものを除く "Cmd"
-	var btn6= $('#btn6');
-	btn6.on('click',function(){
-    //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
-    var txt=$('#changeText').val().replace(/\$ /g,'')
-    txt=txt.replace(/\% /g,'');
-    txt=txt.replace(/\＄ /g,'');
-    txt=txt.replace(/> /g,'');
-	//txt=txt.replace(/# /g,'');
-	//txt=txt.replace(/\+ /g,'');
-    console.log(txt);
-    $('#changeText').val(txt);
-    var copyText = $('#changeText');
-		copyText.select();
-		document.execCommand("copy");
-	});
-});
+// $(function(){//コマンドラインの余計なものを除く "Cmd"
+// 	var btn6= $('#btn6');
+// 	btn6.on('click',function(){
+//     //var txt=$('#changeText').val().replace(/\d\d.\d\d->\d\d.\d\d	 /g,' ');
+//     var txt=$('#changeText').val().replace(/\$ /g,'')
+//     txt=txt.replace(/\% /g,'');
+//     txt=txt.replace(/\＄ /g,'');
+//     txt=txt.replace(/> /g,'');
+// 	//txt=txt.replace(/# /g,'');
+// 	//txt=txt.replace(/\+ /g,'');
+//     console.log(txt);
+//     $('#changeText').val(txt);
+//     var copyText = $('#changeText');
+// 		copyText.select();
+// 		document.execCommand("copy");
+// 	});
+// });
 
 $(function(){//コピー
 	var btn2= $('#btn2');
@@ -313,10 +312,6 @@ function countLength1(){
 function countLength2(){
 	document.getElementById("count2").innerText = document.querySelector('#Text').value.length+"文字";
 }
-
-
-
-
 
 //////////////////////
 
